@@ -22,7 +22,7 @@ class CustomAppBar extends StatelessWidget {
           ),
           child: const CircleAvatar(
             backgroundImage: AssetImage(
-              'assets/images/20210824_011916.jpg',
+              'assets/images/IMG_6914.jpg',
             ),
             radius: 22,
           ),
@@ -55,7 +55,7 @@ class CustomAppBar extends StatelessWidget {
                 Text(
                   'sabry abo alm street',
                   style: Styles.textStyle24
-                      .copyWith(color: kPrimaryColr, fontSize: 12),
+                      .copyWith(color: kPrimaryColor, fontSize: 12),
                 ),
                 const SizedBox(
                   width: 10,
@@ -63,7 +63,7 @@ class CustomAppBar extends StatelessWidget {
                 const Icon(
                   Icons.add_location,
                   size: 14,
-                  color: kPrimaryColr,
+                  color: kPrimaryColor,
                 ),
               ],
             ),
@@ -80,7 +80,7 @@ class CustomAppBar extends StatelessWidget {
             gradient: const LinearGradient(
               colors: [
                 Colors.amber,
-                kPrimaryColr,
+                kPrimaryColor,
               ],
             ),
           ),

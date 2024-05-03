@@ -26,7 +26,7 @@ class AuthWithSocialMedia extends StatelessWidget {
                     fontFamily: 'Heebo',
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
-                    color: kPrimaryColr),
+                    color: kPrimaryColor),
               ),
             ),
             Expanded(
@@ -45,7 +45,7 @@ class AuthWithSocialMedia extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             InkWell(
-              splashColor: kPrimaryColr,
+              splashColor: kPrimaryColor,
               child: CircleAvatar(
                 backgroundColor: Colors.white,
                 child: Image.asset('assets/images/icons8-google-48.png'),
@@ -55,7 +55,7 @@ class AuthWithSocialMedia extends StatelessWidget {
               width: 60,
             ),
             InkWell(
-              splashColor: kPrimaryColr,
+              splashColor: kPrimaryColor,
               child: CircleAvatar(
                 backgroundColor: Colors.white,
                 child: Image.asset('assets/images/icons8-facebook-48.png'),

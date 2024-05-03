@@ -21,7 +21,7 @@ class CustomSearchBar extends StatelessWidget {
             'Search in Bisku',
             style: Styles.textStyle16.copyWith(
               fontSize: 12,
-              color: kPrimaryColr.withOpacity(0.5),
+              color: kPrimaryColor.withOpacity(0.5),
             ),
           ),
           const SizedBox(
@@ -30,7 +30,7 @@ class CustomSearchBar extends StatelessWidget {
           Icon(
             Icons.search,
             size: 12,
-            color: kPrimaryColr.withOpacity(0.5),
+            color: kPrimaryColor.withOpacity(0.5),
           )
         ],
       ),

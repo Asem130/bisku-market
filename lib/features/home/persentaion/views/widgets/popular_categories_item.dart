@@ -16,12 +16,18 @@ class PopularCategoriesItem extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           color: kItemColor,
+          boxShadow: const [
+            BoxShadow(
+                blurRadius: 2,
+                color: Color.fromARGB(255, 171, 173, 171),
+                offset: Offset(0, 3)),
+          ],
         ),
         child: Center(
           child: Image.asset(
             image,
-            width: 50,
-            height: 50,
+            width: width / 6,
+            height: 60,
           ),
         ),
       ),

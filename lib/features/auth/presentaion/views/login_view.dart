@@ -51,7 +51,7 @@ class LoginViewBody extends StatelessWidget {
                   'Welcom back',
                   style: Styles.textStyle40.copyWith(
                       fontSize: 32,
-                      color: kPrimaryColr,
+                      color: kPrimaryColor,
                       fontWeight: FontWeight.w600,
                       fontFamily: 'Judson'),
                 ),
@@ -66,7 +66,7 @@ class LoginViewBody extends StatelessWidget {
                 CustomTextField(
                   hintText: 'Email',
                   prefixIcon: const Icon(FontAwesomeIcons.envelope,
-                      color: kPrimaryColr),
+                      color: kPrimaryColor),
                   onChanged: (value) {},
                 ),
                 const SizedBox(
@@ -75,8 +75,8 @@ class LoginViewBody extends StatelessWidget {
                 CustomTextField(
                   hintText: 'passward',
                   suffixIcon:
-                      const Icon(Icons.remove_red_eye, color: kPrimaryColr),
-                  prefixIcon: const Icon(Icons.lock, color: kPrimaryColr),
+                      const Icon(Icons.remove_red_eye, color: kPrimaryColor),
+                  prefixIcon: const Icon(Icons.lock, color: kPrimaryColor),
                   onChanged: (value) {},
                 ),
                 Row(
@@ -99,7 +99,7 @@ class LoginViewBody extends StatelessWidget {
                       child: Text(
                         'Forget passward?',
                         style: Styles.textStyle24
-                            .copyWith(color: kPrimaryColr, fontSize: 12),
+                            .copyWith(color: kPrimaryColor, fontSize: 12),
                       ),
                     )
                   ],
@@ -128,7 +128,7 @@ class LoginViewBody extends StatelessWidget {
                       child: Text(
                         'Sign Up',
                         style: Styles.textStyle24
-                            .copyWith(color: kPrimaryColr, fontSize: 12),
+                            .copyWith(color: kPrimaryColor, fontSize: 12),
                       ),
                     )
                   ],
@@ -140,7 +140,7 @@ class LoginViewBody extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     InkWell(
-                      splashColor: kPrimaryColr,
+                      splashColor: kPrimaryColor,
                       child: CircleAvatar(
                         backgroundColor: Colors.white,
                         child:
@@ -151,7 +151,7 @@ class LoginViewBody extends StatelessWidget {
                       width: 60,
                     ),
                     InkWell(
-                      splashColor: kPrimaryColr,
+                      splashColor: kPrimaryColor,
                       child: CircleAvatar(
                         backgroundColor: Colors.white,
                         child:

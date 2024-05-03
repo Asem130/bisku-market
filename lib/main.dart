@@ -1,8 +1,11 @@
 import 'package:bisku/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+ 
+ 
   runApp(const Bisku());
+   
 }
 
 class Bisku extends StatelessWidget {

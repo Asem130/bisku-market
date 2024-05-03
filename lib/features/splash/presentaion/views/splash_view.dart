@@ -28,7 +28,7 @@ class _SplashViewState extends State<SplashView> {
         const Duration(
           seconds: 3,
         ), () {
-      GoRouter.of(context).push(AppRouter.kRegisterView);
+      GoRouter.of(context).push(AppRouter.kGetNotifiedView);
     });
   }
 }

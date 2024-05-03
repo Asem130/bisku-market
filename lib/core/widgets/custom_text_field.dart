@@ -17,7 +17,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      cursorColor: kPrimaryColr,
+      cursorColor: kPrimaryColor,
       validator: (data) {
         if (data!.isEmpty) {
           return 'This feild must be not empty';

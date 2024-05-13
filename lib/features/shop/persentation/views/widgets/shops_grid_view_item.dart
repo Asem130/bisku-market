@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ShopsListViewItem extends StatelessWidget {
-  const ShopsListViewItem({super.key});
+class ShopsGridViewItem extends StatelessWidget {
+  const ShopsGridViewItem({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
+      
       children: [
         Container(
           width: 140,
@@ -16,11 +16,20 @@ class ShopsListViewItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
             image: const DecorationImage(
               image: AssetImage(
-                'assets/images/ad.jpg',
+                'assets/images/Logo_METRO.svg.png',
               ),
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
+        ),
+      
+        const Text(
+          'Metro',
+          style: TextStyle(fontFamily: 'Heebo',fontWeight: FontWeight.w600,fontSize:17),
+        ),
+        const Text(
+          '10-15 min',
+          style: TextStyle(fontSize: 12,color: Colors.grey),
         ),
       ],
     );

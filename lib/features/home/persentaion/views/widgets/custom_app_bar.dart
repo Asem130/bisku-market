@@ -3,8 +3,8 @@ import 'package:bisku/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
-
+  const CustomAppBar({super.key,});
+ 
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -15,16 +15,22 @@ class CustomAppBar extends StatelessWidget {
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
-                  blurRadius: 10,
-                  color: Color.fromARGB(255, 30, 31, 30),
-                  spreadRadius: 1)
+                blurRadius: 10,
+                color: Color.fromARGB(255, 30, 31, 30),
+                spreadRadius: 1,
+              ),
             ],
           ),
-          child: const CircleAvatar(
-            backgroundImage: AssetImage(
-              'assets/images/IMG_6914.jpg',
+          child: GestureDetector(
+            onTap: (){
+              Scaffold.of(context).openDrawer();
+            },
+            child: const CircleAvatar(
+              backgroundImage: AssetImage(
+                'assets/images/IMG_6914.jpg',
+              ),
+              radius: 22,
             ),
-            radius: 22,
           ),
         ),
         const Spacer(
@@ -91,7 +97,7 @@ class CustomAppBar extends StatelessWidget {
                   TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
             ),
           ),
-        )
+        ),
       ],
     );
   }

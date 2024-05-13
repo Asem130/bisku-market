@@ -6,7 +6,7 @@ class RegisterViewBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
+
     return ShaderMask(
       shaderCallback: (rect) {
         return LinearGradient(
@@ -22,15 +22,8 @@ class RegisterViewBackground extends StatelessWidget {
       },
       blendMode: BlendMode.dstIn,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(
-            width: width,
-            height: 250,
-            'assets/images/top.png',
-          ),
-          SizedBox(
-            height: height / 8,
-          ),
           Image.asset(
             width: width,
             height: 300,

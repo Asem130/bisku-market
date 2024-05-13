@@ -8,12 +8,13 @@ class CustomTextField extends StatelessWidget {
     required this.onChanged,
     this.prefixIcon,
     this.suffixIcon,
+    this.inputType,
   });
   final String hintText;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final Function(String) onChanged;
-
+  final TextInputType? inputType;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -22,7 +23,7 @@ class CustomTextField extends StatelessWidget {
         if (data!.isEmpty) {
           return 'This feild must be not empty';
         }
-        return ''; // lock hereeeeeeeeeeeeeeeeeeeeeee
+        
       },
       style: const TextStyle(
         color: Color.fromARGB(
@@ -32,6 +33,7 @@ class CustomTextField extends StatelessWidget {
           0,
         ),
       ),
+      keyboardType: inputType,
       onChanged: onChanged,
       decoration: InputDecoration(
         filled: true,

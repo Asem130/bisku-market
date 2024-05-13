@@ -1,40 +1,35 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 
-class Api{
+class Api {
+  Dio dio = Dio();
+  final String _baseUrl = 'http://biskueapi.runasp.net/api/Account/';
 
-  get()async{
-    var headers = {
-  'Content-Type': 'application/json'
-};
-var data = json.encode({
-  "displayName": "Medo ALI",
-  "firstName": "Medo",
-  "lastName": "ALI",
-  "email": "SDASssssssssssD@gmail.com",
-  "phoneNumber": "76565757857578",
-  "password": "Medo@11",
-  "city": "fyoum",
-  "country": "egpt",
-  "street": "fon",
-  "zipCode": "877"
-});
-var dio = Dio();
-var response = await dio.request(
-  'http://biskueapi.runasp.net/api/Account/register',
-  options: Options(
-    method: 'POST',
-    headers: headers,
-  ),
-  data: data,
-);
-
-if (response.statusCode == 200) {
- 
-}
-else {
-  print(response.statusMessage);
-}
+  Future<void> postData(
+      {required String endPoint,
+      required String firstName,
+      required String lastName,
+      required String email,
+      required String password,
+      required String phone}) async {
+    Map data = {
+      'displayName': '$firstName $lastName',
+      'firstName': firstName,
+      'lastName': lastName,
+      'email': email,
+      'phoneNumber': phone,
+      'password': password
+    };
+    Response response = await dio.post('$_baseUrl$endPoint',
+        data: data,
+        options: Options(headers: {'Content-Type': 'application/json'}));
+    if (response.statusCode == 200) {
+      print(response.data);
+    } else if (response.statusCode == 401) {
+      print('unAuth');
+    } else if (response.statusCode == 400) {
+      print('errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr');
+    } else {
+      print('er151515ror');
+    }
   }
 }

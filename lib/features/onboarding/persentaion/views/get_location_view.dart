@@ -58,7 +58,7 @@ class GetLocationBody extends StatelessWidget {
               PermissionStatus locationstatus =
                   await Permission.location.request();
               if (locationstatus == PermissionStatus.granted) {
-                GoRouter.of(context).push(AppRouter.kHomeView);
+                GoRouter.of(context).push(AppRouter.kRegisterView);
               }
               if (locationstatus == PermissionStatus.denied) {
                 Fluttertoast.showToast(

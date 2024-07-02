@@ -1,8 +1,17 @@
 import 'package:bisku/core/utils/styles.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-class DeliverOrReserv extends StatelessWidget {
+class DeliverOrReserv extends StatefulWidget {
   const DeliverOrReserv({super.key});
+
+  @override
+  State<DeliverOrReserv> createState() => _DeliverOrReservState();
+}
+
+class _DeliverOrReservState extends State<DeliverOrReserv> {
+  bool isDelivery = false;
 
   @override
   Widget build(BuildContext context) {
@@ -15,34 +24,53 @@ class DeliverOrReserv extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
-            height: 40,
-            width: MediaQuery.of(context).size.width / 2-24,
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 60, 175, 70),
-              borderRadius: BorderRadius.circular(24),
-            ),
-            child: Center(
-              child: Text('Delivery',
-                  style: Styles.textStyle16.copyWith(
-                    color: const Color.fromARGB(255, 255, 254, 254),
-                    fontWeight: FontWeight.w500,
-                  )),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                isDelivery = true;
+              });
+            },
+            child: Container(
+              height: 40,
+              width: MediaQuery.of(context).size.width / 2 - 24,
+              decoration: BoxDecoration(
+                color: isDelivery
+                    ? const Color.fromARGB(255, 60, 175, 70)
+                    : const Color.fromARGB(255, 223, 222, 222),
+                borderRadius: BorderRadius.circular(24),
+              ),
+              child: Center(
+                child: Text('Delivery',
+                    style: Styles.textStyle16.copyWith(
+                      color: const Color.fromARGB(255, 0, 0, 0),
+                      fontWeight: FontWeight.w500,
+                    )),
+              ),
             ),
           ),
           const Spacer(),
-          Container(
-            height: 40,
-            width: MediaQuery.of(context).size.width / 2-24,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(24),
-            ),
-            child: Center(
-              child: Text(
-                'Reservation',
-                style: Styles.textStyle16.copyWith(
-                  color: const Color.fromARGB(255, 0, 0, 0),
-                  fontWeight: FontWeight.w400,
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                isDelivery = false;
+              });
+            },
+            child: Container(
+              height: 40,
+              width: MediaQuery.of(context).size.width / 2 - 24,
+              decoration: BoxDecoration(
+                color: isDelivery
+                    ? const Color.fromARGB(255, 223, 222, 222)
+                    : const Color.fromARGB(255, 60, 175, 70),
+                borderRadius: BorderRadius.circular(24),
+              ),
+              child: Center(
+                child: Text(
+                  'Reservation',
+                  style: Styles.textStyle16.copyWith(
+                    color: const Color.fromARGB(255, 0, 0, 0),
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
             ),

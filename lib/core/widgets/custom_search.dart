@@ -6,6 +6,7 @@ class CustomSearch extends StatelessWidget {
   final String hintText;
   final void Function(String)? onChanged;
   final void Function(String)? onSubmitted;
+  
   @override
   Widget build(BuildContext context) {
     return Container(

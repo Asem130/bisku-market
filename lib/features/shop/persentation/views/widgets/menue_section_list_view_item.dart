@@ -1,8 +1,20 @@
+import 'package:bisku/features/shop/persentation/manger/basket_cubit/basket_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MenuSectionListViewItem extends StatelessWidget {
-  const MenuSectionListViewItem({super.key});
-
+  const MenuSectionListViewItem({
+    super.key,
+    required this.image,
+    required this.kilo,
+    required this.price,
+    required this.name, required this.shopName,
+  });
+  final String image;
+  final String kilo;
+  final String price;
+  final String name;
+    final String shopName;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,38 +34,59 @@ class MenuSectionListViewItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
                 color: Colors.white,
               ),
-              child: Image.asset('assets/images/5c94f114895083 18.png'),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.network(
+                  image,
+                  fit: BoxFit.fill,
+                ),
+              ),
             ),
             const SizedBox(
               height: 10,
             ),
-            const Text(
-              'Beef brisket',
-              style: TextStyle(fontWeight: FontWeight.w600),
+            Text(
+              name,
+              style: const TextStyle(fontWeight: FontWeight.w600),
             ),
             const SizedBox(
               height: 10,
             ),
-            const Row(
+            Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  '400g',
-                  style: TextStyle(color: Colors.grey),
+                  kilo,
+                  style: const TextStyle(color: Colors.grey),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 Text(
-                  '290\$',
-                  style: TextStyle(
+                  price,
+                  style: const TextStyle(
                       color: Color.fromARGB(255, 255, 119, 0),
                       fontWeight: FontWeight.w900),
                 ),
               ],
             ),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.add))
+            IconButton(
+                onPressed: () {
+                  BlocProvider.of<BasketCubit>(context).addItemToBasket(
+                    name: name,
+                    kilo: kilo,
+                    image: image,
+                    price: price,
+                    shopName: shopName 
+                  );
+
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Item Added Succssefuly'),
+                    duration: Duration(seconds: 2),
+                  ));
+                },
+                icon: const Icon(Icons.add))
           ],
         ),
       ),

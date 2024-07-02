@@ -1,84 +1,106 @@
+import 'package:bisku/core/utils/app_router.dart';
+import 'package:bisku/core/utils/constants.dart';
 import 'package:bisku/core/utils/styles.dart';
+import 'package:bisku/features/shop/persentation/manger/product/product_cubit.dart';
+import 'package:bisku/features/shop/persentation/views/widgets/tomato_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class CategoryMenueItems extends StatelessWidget {
-  const CategoryMenueItems({super.key});
+  const CategoryMenueItems(
+      {super.key,
+      required this.name,
+      required this.title,
+      required this.images,
+      required this.shopName});
+  final String name;
+  final String title;
+  final String shopName;
+  final String images;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
-          'Vegetables and fruis',
+        title: Text(
+          name,
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+                 GoRouter.of(context).push(AppRouter.ksearch);
+            },
             icon: const Icon(Icons.search),
           )
         ],
       ),
-      body: const CategoryMenueItemsbody(),
+      body: CategoryMenueItemsbody(
+        name: name,
+        title: title,
+        shopName: shopName,
+      ),
     );
   }
 }
 
 class CategoryMenueItemsbody extends StatelessWidget {
-  const CategoryMenueItemsbody({super.key});
-
+  const CategoryMenueItemsbody(
+      {super.key,
+      required this.name,
+      required this.title,
+      required this.shopName});
+  final String name;
+  final String shopName;
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(24),
-      child: CustomScrollView(physics: const BouncingScrollPhysics(), slivers: [
-        SliverToBoxAdapter(
-          child: Text(
-            'Vegetables',
-            style: Styles.textStyle26.copyWith(
-              fontWeight: FontWeight.w600,
+        padding: const EdgeInsets.all(24),
+        child:
+            CustomScrollView(physics: const BouncingScrollPhysics(), slivers: [
+          SliverToBoxAdapter(
+            child: Text(
+              name,
+              style: Styles.textStyle26.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
-        ),
-        const SliverToBoxAdapter(
-          child: SizedBox(
-            height: 15,
-          ),
-        ),
-        const SliverToBoxAdapter(child: TomatoGridView()),
-        const SliverToBoxAdapter(
-          child: SizedBox(
-            height: 15,
-          ),
-        ),
-        SliverToBoxAdapter(
-          child: Text(
-            'Fruites',
-            style: Styles.textStyle26.copyWith(
-              fontWeight: FontWeight.w600,
+          const SliverToBoxAdapter(
+            child: SizedBox(
+              height: 15,
             ),
           ),
-        ),
-        const SliverToBoxAdapter(
-          child: SizedBox(
-            height: 15,
-          ),
-        ),
-        const SliverToBoxAdapter(child: PotatoGridView()),
-      ]),
-    );
+          SliverToBoxAdapter(
+              child: TomatoGridView(
+            shopName: shopName,
+          )),
+        ]));
   }
 }
 
-class TomatoGridView extends StatelessWidget {
-  const TomatoGridView({super.key});
+class TomatoGridView extends StatefulWidget {
+  const TomatoGridView({super.key, required this.shopName});
+  final String shopName;
+
+  @override
+  State<TomatoGridView> createState() => _TomatoGridViewState();
+}
+
+class _TomatoGridViewState extends State<TomatoGridView> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
         physics: const NeverScrollableScrollPhysics(),
         scrollDirection: Axis.vertical,
-        itemCount: 17,
+        itemCount: BlocProvider.of<ProductCubit>(context).productes.length,
         shrinkWrap: true,
         clipBehavior: Clip.hardEdge,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -88,149 +110,15 @@ class TomatoGridView extends StatelessWidget {
           mainAxisSpacing: 10,
         ),
         itemBuilder: (context, index) {
-          return const TomatoItem();
+          var pro = BlocProvider.of<ProductCubit>(context).productes;
+          return TomatoItem(
+            model: pro[index],
+            shopName: widget.shopName,
+            name: pro[index].name,
+            price: pro[index].price.toString(),
+            image: pro[index].image,
+            kilo: pro[index].kilo,
+          );
         });
-  }
-}
-
-class PotatoGridView extends StatelessWidget {
-  const PotatoGridView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GridView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        scrollDirection: Axis.vertical,
-        itemCount: 17,
-        shrinkWrap: true,
-        clipBehavior: Clip.hardEdge,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          childAspectRatio: 0.55,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-        ),
-        itemBuilder: (context, index) {
-          return const PotatoItem();
-        });
-  }
-}
-
-class TomatoItem extends StatelessWidget {
-  const TomatoItem({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width / 4,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        color: const Color.fromARGB(255, 231, 230, 230),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          
-          children: [
-            Container(
-              width: 90,
-              height: 80,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: Colors.white,
-              ),
-              child: Image.asset('assets/images/5c94f114895083 18.png'),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              'Beef brisket',
-              style: TextStyle(fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  '1kg',
-                  style: TextStyle(color: Colors.grey),
-                ),
-               Spacer(),
-                Text(
-                  '8\$',
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 255, 119, 0),
-                      fontWeight: FontWeight.w900),
-                ),
-              ],
-            ),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.add))
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class PotatoItem extends StatelessWidget {
-  const PotatoItem({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width / 4,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        color: const Color.fromARGB(255, 231, 230, 230),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Container(
-              width: 90,
-              height: 80,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: Colors.white,
-              ),
-              child: Image.asset('assets/images/5c94f114895083 18.png'),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              'Beef brisket',
-              style: TextStyle(fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  '1kg',
-                  style: TextStyle(color: Colors.grey),
-                ),
-                Spacer(),
-                Text(
-                  '290\$',
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 255, 119, 0),
-                      fontWeight: FontWeight.w900),
-                ),
-              ],
-            ),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.add))
-          ],
-        ),
-      ),
-    );
   }
 }

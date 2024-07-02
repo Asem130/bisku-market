@@ -1,4 +1,3 @@
-import 'package:bisku/constants.dart';
 import 'package:flutter/material.dart';
 
 class PopularCategoriesItem extends StatelessWidget {
@@ -15,16 +14,16 @@ class PopularCategoriesItem extends StatelessWidget {
         height: 70,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: kItemColor,
+          color: const Color.fromARGB(255, 255, 255, 255),
           boxShadow: const [
             BoxShadow(
                 blurRadius: 2,
-                color: Color.fromARGB(255, 171, 173, 171),
+                color: Color.fromARGB(255, 226, 226, 226),
                 offset: Offset(0, 3)),
           ],
         ),
         child: Center(
-          child: Image.asset(
+          child: Image.network(
             image,
             width: width / 6,
             height: 60,

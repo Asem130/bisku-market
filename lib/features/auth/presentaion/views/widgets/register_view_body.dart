@@ -20,7 +20,13 @@ class RegisterViewBody extends StatefulWidget {
 }
 
 class _RegisterViewBodyState extends State<RegisterViewBody> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   bool isLoading = false;
+
   String? firstName;
   String? lastName;
   String? email;
@@ -33,12 +39,12 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
   Widget build(BuildContext context) {
     return BlocConsumer<RegisterCubit, RegisterStates>(
       listener: (context, state) {
-        if (state is LoadingState) {
+        if (state is RegisterLoadingState) {
           isLoading = true;
         }
-        if (state is SuccsessState) {
+        if (state is RegisterSuccsessState) {
           isLoading = false;
-          GoRouter.of(context).push(AppRouter.kHomeView);
+          GoRouter.of(context).push(AppRouter.kLoginView);
         }
       },
       builder: (context, state) {
@@ -124,6 +130,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                             height: 20,
                           ),
                           CustomTextField(
+                            obsecuer: true,
                             hintText: 'passward',
                             suffixIcon: const Icon(Icons.remove_red_eye,
                                 color: kPrimaryColor),
@@ -153,8 +160,29 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                                 }
                               }),
                           const SizedBox(
-                            height: 40,
+                            height: 10,
                           ),
+                          Row(
+                            children: [
+                              const Text(
+                                'Already have an account?',
+                                style: Styles.textStyle16,
+                              ),
+                              const SizedBox(
+                                width: 2,
+                              ),
+                              TextButton(
+                                  onPressed: () {
+                                    GoRouter.of(context)
+                                        .go(AppRouter.kLoginView);
+                                  },
+                                  child: Text(
+                                    'Sign in',
+                                    style: Styles.textStyle16
+                                        .copyWith(color: kPrimaryColor),
+                                  ))
+                            ],
+                          )
                         ],
                       ),
                     ),
@@ -165,70 +193,6 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
           ),
         );
       },
-    );
-  }
-}
-
-class RegisterWidget extends StatelessWidget {
-  const RegisterWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          'Register',
-          style: Styles.textStyle40
-              .copyWith(color: kPrimaryColor, fontFamily: 'Judson'),
-        ),
-        Text(
-          'Create a new account',
-          style: Styles.textStyle24
-              .copyWith(color: Colors.grey, fontFamily: 'Acme'),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        CustomTextField(
-          hintText: 'Full name',
-          prefixIcon: const Icon(
-            FontAwesomeIcons.user,
-            color: kPrimaryColor,
-          ),
-          onChanged: (value) {},
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        CustomTextField(
-          hintText: 'Email',
-          prefixIcon:
-              const Icon(FontAwesomeIcons.envelope, color: kPrimaryColor),
-          onChanged: (value) {},
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        CustomTextField(
-          hintText: 'passward',
-          suffixIcon: const Icon(Icons.remove_red_eye, color: kPrimaryColor),
-          prefixIcon: const Icon(Icons.lock, color: kPrimaryColor),
-          onChanged: (value) {},
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        CustomTextButton(
-          text: 'Sign Up',
-          onTap: () {
-            GoRouter.of(context).go(AppRouter.kLoginView);
-          },
-        ),
-        const SizedBox(
-          height: 40,
-        ),
-      ],
     );
   }
 }

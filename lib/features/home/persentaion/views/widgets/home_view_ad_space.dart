@@ -1,3 +1,4 @@
+import 'package:bisku/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class AdSpace extends StatelessWidget {
@@ -11,9 +12,9 @@ class AdSpace extends StatelessWidget {
       height: 150,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        image: const DecorationImage(
-            image: AssetImage(
-              'assets/images/ad.jpg',
+        image: DecorationImage(
+            image: NetworkImage(
+              kShopsImages[5],
             ),
             fit: BoxFit.cover),
       ),

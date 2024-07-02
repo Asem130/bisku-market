@@ -2,8 +2,9 @@ import 'package:bisku/features/shop/persentation/views/widgets/menue_section_lis
 import 'package:flutter/material.dart';
 
 class MenuSection extends StatelessWidget {
-  const MenuSection({super.key, required this.text});
+  const MenuSection({super.key, required this.text, required this.shopName});
   final String text;
+    final String shopName;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,7 +21,7 @@ class MenuSection extends StatelessWidget {
         const SizedBox(
           height: 15,
         ),
-        const MenuSectionListView()
+         MenuSectionListView(shopName: shopName,)
       ],
     );
   }

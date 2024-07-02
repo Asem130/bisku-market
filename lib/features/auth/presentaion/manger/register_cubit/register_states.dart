@@ -1,16 +1,17 @@
 
 abstract class RegisterStates {}
 
-final class InistialState extends RegisterStates {}
+final class RegisterInistialState extends RegisterStates {}
 
-final class LoadingState extends RegisterStates {}
+final class RegisterLoadingState extends RegisterStates {}
 
-final class SuccsessState extends RegisterStates {
+final class RegisterSuccsessState extends RegisterStates {
+
   
 }
 
-final class FailureState extends RegisterStates {
-  final String errorMessage;
+final class RegisterFailureState extends RegisterStates {
+final String errorMessage;
 
-  FailureState({required this.errorMessage});
+  RegisterFailureState({required this.errorMessage});
 }

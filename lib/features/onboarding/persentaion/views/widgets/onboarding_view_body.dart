@@ -2,9 +2,9 @@ import 'package:bisku/constants.dart';
 import 'package:bisku/core/utils/app_router.dart';
 import 'package:bisku/core/utils/styles.dart';
 import 'package:bisku/features/onboarding/persentaion/manger/models/onboarding_model.dart';
+import 'package:bisku/features/onboarding/persentaion/views/widgets/onboarding_view_item.dart';
 import 'package:bisku/features/onboarding/persentaion/views/widgets/page_indecator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
@@ -80,7 +80,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
               style: TextButton.styleFrom(
                 backgroundColor: kPrimaryColor,
               ),
-              onPressed: () {
+              onPressed: () async {
                 if (isLast == true) {
                   GoRouter.of(context).go(AppRouter.kGetNotifiedView);
                 } else {
@@ -105,60 +105,5 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
         ),
       ],
     ));
-  }
-}
-
-class OnBoardingViewItem extends StatelessWidget {
-  const OnBoardingViewItem({super.key, required this.model});
-  final OnBoardingModel model;
-
-  @override
-  Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
-    return Stack(
-      children: [
-        Image.asset(
-          model.image,
-          height: height,
-          width: width,
-          fit: BoxFit.cover,
-        ),
-        const SizedBox(
-          height: 15,
-        ),
-        Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                model.title,
-                style: const TextStyle(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Judson',
-                  fontSize: 48,
-                ),
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              Text(
-                model.supTitle,
-                textAlign: TextAlign.start,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 22,
-                ),
-              ),
-            ],
-          ),
-        )
-      ],
-    );
   }
 }

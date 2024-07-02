@@ -1,10 +1,9 @@
-
-import 'package:bisku/features/auth/data/repos/register_repo.dart';
+import 'package:bisku/features/auth/data/repos/register_repository/register_repo.dart';
 import 'package:bisku/features/auth/presentaion/manger/register_cubit/register_states.dart';
 import 'package:bloc/bloc.dart';
 
 class RegisterCubit extends Cubit<RegisterStates> {
-  RegisterCubit(this.registerRepo) : super(InistialState());
+  RegisterCubit(this.registerRepo) : super(RegisterInistialState());
   final RegisterRepo registerRepo;
 
   Future<void> postUserRegister(
@@ -13,7 +12,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
       required String email,
       required String password,
       required String phoneNumber}) async {
-    emit(LoadingState());
+    emit(RegisterLoadingState());
     try {
       await registerRepo.postUserRegisterData(
         firstName: firstName,
@@ -22,9 +21,9 @@ class RegisterCubit extends Cubit<RegisterStates> {
         password: password,
         phoneNumber: phoneNumber,
       );
-      emit(SuccsessState());
+      emit(RegisterSuccsessState());
     } on Exception catch (e) {
-      emit(FailureState(
+      emit(RegisterFailureState(
           errorMessage: 'Errorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr${e.toString()}'));
     }
   }

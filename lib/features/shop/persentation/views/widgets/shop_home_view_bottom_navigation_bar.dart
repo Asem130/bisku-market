@@ -3,8 +3,8 @@ import 'package:bisku/features/shop/persentation/views/widgets/shope_view_bottom
 import 'package:flutter/material.dart';
 
 class ShopHomeViewBottomNavigationBar extends StatefulWidget {
-  const ShopHomeViewBottomNavigationBar({super.key});
-
+  const ShopHomeViewBottomNavigationBar({super.key, required this.time});
+  final String time;
   @override
   State<ShopHomeViewBottomNavigationBar> createState() =>
       _ShopHomeViewBottomNavigationBarState();
@@ -38,11 +38,11 @@ class _ShopHomeViewBottomNavigationBarState
           SizedBox(
             width: MediaQuery.of(context).size.width / 5,
           ),
-          const Column(
+           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text('10-15 min.'),
-              Text(
+              Text(widget.time),
+           const    Text(
                 'Delivery detiales',
                 style: TextStyle(color: Colors.grey),
               ),

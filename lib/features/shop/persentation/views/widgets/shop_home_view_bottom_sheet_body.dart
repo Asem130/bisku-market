@@ -40,10 +40,6 @@ class ShopHomeViewBottomSheetbody extends StatelessWidget {
             contentText:
                 'The fee is 5% of the basket, but not more than 50 \$,and not less  than 10\$.This fee helps us cover the costs of order procssing, customers support and improving our services',
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          const AboutShop()
         ],
       ),
     );

@@ -4,19 +4,28 @@ import 'package:bisku/features/shop/persentation/views/widgets/shop_home_view_bo
 import 'package:flutter/material.dart';
 
 class ShopHomeView extends StatelessWidget {
-  const ShopHomeView({super.key});
-
+  const ShopHomeView({
+    super.key,
+    required this.name,
+    required this.image,
+    required this.time,
+  });
+  final String name;
+  final String image;
+  final String time;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      bottomNavigationBar:
-          const SafeArea(child: ShopHomeViewBottomNavigationBar()),
+      bottomNavigationBar: SafeArea(
+          child: ShopHomeViewBottomNavigationBar(
+        time: time,
+      )),
       appBar: AppBar(
         title: Row(
           children: [
-            Image.asset(
-              'assets/images/s.jpg',
+            Image.network(
+              image,
               width: 50,
               height: 50,
             ),
@@ -24,13 +33,16 @@ class ShopHomeView extends StatelessWidget {
               width: 10,
             ),
             Text(
-              'Elgelany',
+              name,
               style: Styles.textStyle24.copyWith(fontSize: 18),
             ),
           ],
         ),
       ),
-      body: const ShopHomeViewBody(),
+      body: ShopHomeViewBody(
+        shopName: name,
+        searchTitle: name,
+      ),
     );
   }
 }

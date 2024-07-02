@@ -1,7 +1,9 @@
+import 'package:bisku/core/utils/app_router.dart';
 import 'package:bisku/core/utils/styles.dart';
-import 'package:bisku/core/widgets/custom_search.dart';
+import 'package:bisku/features/shop/persentation/views/widgets/searh_for_shop.dart';
 import 'package:bisku/features/shop/persentation/views/widgets/shops_grid_view.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ShopsViewBody extends StatelessWidget {
   const ShopsViewBody({super.key});
@@ -11,11 +13,6 @@ class ShopsViewBody extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(24),
       child: CustomScrollView(physics: const BouncingScrollPhysics(), slivers: [
-        const SliverToBoxAdapter(
-          child: CustomSearch(
-            hintText: 'Search',
-          ),
-        ),
         const SliverToBoxAdapter(
           child: SizedBox(
             height: 15,

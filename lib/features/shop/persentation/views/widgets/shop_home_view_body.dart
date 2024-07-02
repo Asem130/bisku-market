@@ -6,56 +6,56 @@ import 'package:bisku/features/shop/persentation/views/widgets/menue_section.dar
 import 'package:flutter/material.dart';
 
 class ShopHomeViewBody extends StatelessWidget {
-  const ShopHomeViewBody({super.key});
-
+  const ShopHomeViewBody(
+      {super.key, required this.searchTitle, required this.shopName});
+  final String searchTitle;
+  final String shopName;
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(24),
+    return Padding(
+      padding: const EdgeInsets.all(24),
       child: CustomScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         slivers: [
-          SliverToBoxAdapter(
-            child: CustomSearch(
-              hintText: 'Search in elgelany',
-            ),
-          ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: SizedBox(
               height: 15,
             ),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: CarouselShopHomeViewSlider(),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: SizedBox(
               height: 15,
             ),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: DeliverOrReserv(),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: SizedBox(
               height: 15,
             ),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: CategoriresGridView(),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: SizedBox(
               height: 15,
             ),
           ),
-          SliverToBoxAdapter(child: MenuSection(text: 'Meat and fish')),
           SliverToBoxAdapter(
+              child: MenuSection(shopName: shopName, text: 'Meat and fish')),
+          const SliverToBoxAdapter(
             child: SizedBox(
               height: 60,
             ),
           ),
-          SliverToBoxAdapter(child: MenuSection(text: 'Vegetables and fruits')),
+          SliverToBoxAdapter(
+              child: MenuSection(
+                  shopName: shopName, text: 'Vegetables and fruits')),
         ],
       ),
     );

@@ -8,9 +8,10 @@ class CustomTextField extends StatelessWidget {
     required this.onChanged,
     this.prefixIcon,
     this.suffixIcon,
-    this.inputType,
+    this.inputType,  this.obsecuer = false,
   });
   final String hintText;
+  final bool obsecuer ;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final Function(String) onChanged;
@@ -18,6 +19,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: obsecuer,
       cursorColor: kPrimaryColor,
       validator: (data) {
         if (data!.isEmpty) {

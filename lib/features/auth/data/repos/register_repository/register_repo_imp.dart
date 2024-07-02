@@ -1,10 +1,9 @@
 import 'package:bisku/core/utils/api_services.dart';
-import 'package:bisku/features/auth/data/repos/register_repo.dart';
+import 'package:bisku/features/auth/data/repos/register_repository/register_repo.dart';
 
 class RegisterRepoImplementation implements RegisterRepo {
   final Api api = Api();
   RegisterRepoImplementation();
-
   @override
   Future<void> postUserRegisterData(
       {required String firstName,
@@ -13,7 +12,7 @@ class RegisterRepoImplementation implements RegisterRepo {
       required String password,
       required String phoneNumber}) async {
     try {
-      await api.postData(
+      await api.postRegisterData(
         endPoint: 'register',
         email: email,
         firstName: firstName,

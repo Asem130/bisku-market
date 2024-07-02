@@ -35,8 +35,8 @@ class GetNotifiedBody extends StatelessWidget {
         ),
         Text(
           'Get Notified',
-          style: Styles.textStyle24
-              .copyWith(fontSize: 32, color: kPrimaryColor, fontWeight: FontWeight.w500),
+          style: Styles.textStyle24.copyWith(
+              fontSize: 32, color: kPrimaryColor, fontWeight: FontWeight.w500),
         ),
         const SizedBox(
           height: 15,
@@ -53,7 +53,7 @@ class GetNotifiedBody extends StatelessWidget {
           children: [
             TextButton(
                 onPressed: () {
-                  GoRouter.of(context).push(AppRouter.kHomeView);
+                  GoRouter.of(context).push(AppRouter.kGetLocationView);
                 },
                 child: Text(
                   'Skip',

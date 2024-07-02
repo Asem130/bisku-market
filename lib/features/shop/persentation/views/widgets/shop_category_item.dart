@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ShopCategoryItem extends StatelessWidget {
-  const ShopCategoryItem({super.key});
+  const ShopCategoryItem({
+    super.key,
+    required this.name,
+    required this.image,
+  });
+  final String name;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -9,13 +15,18 @@ class ShopCategoryItem extends StatelessWidget {
       child: Column(
         children: [
           CircleAvatar(
+            backgroundColor: Colors.white,
             radius: 40,
-            child: Image.asset('assets/images/fresh-beef.png',
-        
+            child: Image.network(
+              image,
             ),
           ),
-          const Text(
-            'Meat and Fish',
+          Text(
+            name,
+            style: const TextStyle(
+              fontSize: 14,
+            ),
+            maxLines: 2,
             textAlign: TextAlign.center,
           )
         ],

@@ -6,4 +6,7 @@ abstract class Failures {
 
 class ServerFailure extends Failures {
   ServerFailure(super.errorMessage);
+  printerror() {
+    print('error message');
+  }
 }

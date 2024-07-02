@@ -11,4 +11,12 @@ class RegisterModel {
   String email;
   String phoneNumber;
   String passWord;
+  factory RegisterModel.from(json) {
+    return RegisterModel(
+        firstName: json['firstName'],
+        lastName: json['displayName'],
+        email: json['email'],
+        phoneNumber: json['phoneNumber'],
+        passWord: json['passWord']);
+  }
 }
